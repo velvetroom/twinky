@@ -11,7 +11,6 @@
 		20165D3621EDCB61004B09D6 /* Mac.m in Sources */ = {isa = PBXBuildFile; fileRef = 20165D3521EDCB61004B09D6 /* Mac.m */; };
 		20165D4321EDCC73004B09D6 /* iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20165D4221EDCC73004B09D6 /* iOS.swift */; };
 		20165D4E21EDCC8A004B09D6 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20165D4D21EDCC8A004B09D6 /* Tests.swift */; };
-		20165D5021EDCC8A004B09D6 /* libMac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20165D3021EDCB61004B09D6 /* libMac.a */; };
 		20165D5D21EDCD5F004B09D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20165D5C21EDCD5F004B09D6 /* AppDelegate.swift */; };
 		20165D5F21EDCD5F004B09D6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20165D5E21EDCD5F004B09D6 /* GameScene.sks */; };
 		20165D6121EDCD5F004B09D6 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20165D6021EDCD5F004B09D6 /* Actions.sks */; };
@@ -19,6 +18,7 @@
 		20165D6521EDCD5F004B09D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20165D6421EDCD5F004B09D6 /* ViewController.swift */; };
 		20165D6721EDCD60004B09D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20165D6621EDCD60004B09D6 /* Assets.xcassets */; };
 		20165D6A21EDCD60004B09D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20165D6821EDCD60004B09D6 /* Main.storyboard */; };
+		20898B2321EF19E5003E057C /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20898B2221EF19E5003E057C /* Application.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,15 +44,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		20165D3021EDCB61004B09D6 /* libMac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMac.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		20165D3021EDCB61004B09D6 /* libMac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMac.a; path = /Users/vin/dev/other/twinky/Mac/build/Debug/libMac.a; sourceTree = "<absolute>"; };
 		20165D3321EDCB61004B09D6 /* Mac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mac.h; sourceTree = "<group>"; };
 		20165D3521EDCB61004B09D6 /* Mac.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mac.m; sourceTree = "<group>"; };
-		20165D4021EDCC73004B09D6 /* libiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libiOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		20165D4021EDCC73004B09D6 /* libiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libiOS.a; path = "/Users/vin/dev/other/twinky/Mac/build/Debug-iphoneos/libiOS.a"; sourceTree = "<absolute>"; };
 		20165D4221EDCC73004B09D6 /* iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS.swift; sourceTree = "<group>"; };
-		20165D4B21EDCC8A004B09D6 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		20165D4B21EDCC8A004B09D6 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Tests.xctest; path = /Users/vin/dev/other/twinky/Mac/build/Debug/Tests.xctest; sourceTree = "<absolute>"; };
 		20165D4D21EDCC8A004B09D6 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		20165D4F21EDCC8A004B09D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20165D5A21EDCD5F004B09D6 /* MacGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		20165D5A21EDCD5F004B09D6 /* MacGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MacGame.app; path = /Users/vin/dev/other/twinky/Mac/build/Debug/MacGame.app; sourceTree = "<absolute>"; };
 		20165D5C21EDCD5F004B09D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20165D5E21EDCD5F004B09D6 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		20165D6021EDCD5F004B09D6 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -62,6 +62,7 @@
 		20165D6921EDCD60004B09D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		20165D6B21EDCD60004B09D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20165D6C21EDCD60004B09D6 /* MacGame.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacGame.entitlements; sourceTree = "<group>"; };
+		20898B2221EF19E5003E057C /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +84,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20165D5021EDCC8A004B09D6 /* libMac.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,19 +104,7 @@
 				20165D4121EDCC73004B09D6 /* iOS */,
 				20165D4C21EDCC8A004B09D6 /* Tests */,
 				20165D5B21EDCD5F004B09D6 /* MacGame */,
-				20165D3121EDCB61004B09D6 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		20165D3121EDCB61004B09D6 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				20165D3021EDCB61004B09D6 /* libMac.a */,
-				20165D4021EDCC73004B09D6 /* libiOS.a */,
-				20165D4B21EDCC8A004B09D6 /* Tests.xctest */,
-				20165D5A21EDCD5F004B09D6 /* MacGame.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		20165D3221EDCB61004B09D6 /* Mac */ = {
@@ -149,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				20165D5C21EDCD5F004B09D6 /* AppDelegate.swift */,
+				20898B2221EF19E5003E057C /* Application.swift */,
 				20165D5E21EDCD5F004B09D6 /* GameScene.sks */,
 				20165D6021EDCD5F004B09D6 /* Actions.sks */,
 				20165D6221EDCD5F004B09D6 /* GameScene.swift */,
@@ -277,7 +266,7 @@
 				Base,
 			);
 			mainGroup = 20165D2721EDCB60004B09D6;
-			productRefGroup = 20165D3121EDCB61004B09D6 /* Products */;
+			productRefGroup = 20165D2721EDCB60004B09D6;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -339,6 +328,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20898B2321EF19E5003E057C /* Application.swift in Sources */,
 				20165D6521EDCD5F004B09D6 /* ViewController.swift in Sources */,
 				20165D6321EDCD5F004B09D6 /* GameScene.swift in Sources */,
 				20165D5D21EDCD5F004B09D6 /* AppDelegate.swift in Sources */,
