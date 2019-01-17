@@ -14,6 +14,7 @@ class View:NSWindow {
         let skview = SKView()
         skview.translatesAutoresizingMaskIntoConstraints = false
         skview.ignoresSiblingOrder = true
+        skview.showsPhysics = true
         contentView!.addSubview(skview)
         
         let scene = SKScene()
@@ -24,6 +25,8 @@ class View:NSWindow {
         let twinky = SKSpriteNode(imageNamed:"stand-right-0")
         twinky.position = CGPoint(x:contentView!.bounds.midX, y:contentView!.bounds.midY)
         scene.addChild(twinky)
+        twinky.physicsBody = SKPhysicsBody(texture:twinky.texture!, size:twinky.texture!.size())
+        twinky.physicsBody?.isDynamic = false
         
         var grassTiles = [SKTileDefinition]()
         var groundTiles = [SKTileDefinition]()
