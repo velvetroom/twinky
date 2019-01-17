@@ -25,11 +25,21 @@ class View:NSWindow {
         twinky.position = CGPoint(x:contentView!.bounds.midX, y:contentView!.bounds.midY)
         scene.addChild(twinky)
         
-        let group = SKTileGroup(rules:[SKTileGroupRule(adjacency:.adjacencyAll, tileDefinitions:[
+        let group = SKTileGroup(rules:[
+            SKTileGroupRule(adjacency:[.adjacencyUpEdge, .adjacencyUpperRightEdge, .adjacencyRightEdge,
+                                       .adjacencyLowerRightEdge, .adjacencyDownEdge, .adjacencyLowerLeftEdge,
+                                       .adjacencyLeftEdge, .adjacencyUpperLeftEdge, .adjacencyUpperRightCorner,
+                                       .adjacencyLowerRightCorner, .adjacencyLowerLeftCorner,
+                                       .adjacencyUpperLeftCorner], tileDefinitions:[
+                SKTileDefinition(texture:SKTexture(imageNamed:"grass-0-top-0")),
+                SKTileDefinition(texture:SKTexture(imageNamed:"grass-0-top-1")),
+                SKTileDefinition(texture:SKTexture(imageNamed:"grass-0-top-2"))]),
+            SKTileGroupRule(adjacency:.adjacencyAll, tileDefinitions:[
                 SKTileDefinition(texture:SKTexture(imageNamed:"grass-0")),
                 SKTileDefinition(texture:SKTexture(imageNamed:"grass-1")),
                 SKTileDefinition(texture:SKTexture(imageNamed:"grass-2")),
-                SKTileDefinition(texture:SKTexture(imageNamed:"grass-3"))])])
+                SKTileDefinition(texture:SKTexture(imageNamed:"grass-3")),
+                SKTileDefinition(texture:SKTexture(imageNamed:"grass-4"))])])
         let floor = SKTileMapNode(tileSet:SKTileSet(tileGroups:[group]), columns:50, rows:5, tileSize:
             CGSize(width:16, height:16), fillWith:group)
         floor.position = CGPoint(x:floor.mapSize.width / 2, y:floor.mapSize.height / 2)
