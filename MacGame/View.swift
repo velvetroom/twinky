@@ -4,6 +4,7 @@ import SpriteKit
 class View:NSWindow {
     private weak var skview:SKView!
     private weak var twinky:SKSpriteNode?
+    private var jumpable = true
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,13 +21,19 @@ class View:NSWindow {
         
         let scene = SceneView()
         scene.left = {
-            self.twinky?.run(SKAction.move(by:CGVector(dx:-15, dy:0), duration:0.1))
+            self.twinky?.physicsBody!.velocity = CGVector(dx:-120, dy:0)
+//            self.twinky?.run(SKAction.applyImpulse(CGVector(dx:-30, dy:0), duration:0.1)) {
+//                self.twinky?.run(SKAction.impus)
+//            }
         }
         scene.right = {
-            self.twinky?.run(SKAction.move(by:CGVector(dx:15, dy:0), duration:0.1))
+            self.twinky?.physicsBody!.velocity = CGVector(dx:120, dy:0)
         }
         scene.up = {
-            self.twinky?.run(SKAction.applyImpulse(CGVector(dx:0, dy:40), duration:0.05))
+            if self.jumpable {
+                self.twinky?.physicsBody!.applyImpulse(CGVector(dx:0, dy:30))
+                self.jumpable = false
+            }
         }
         skview.presentScene(scene)
         
