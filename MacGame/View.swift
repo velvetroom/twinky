@@ -3,6 +3,7 @@ import SpriteKit
 
 class View:NSWindow {
     private weak var skview:SKView!
+    private weak var twinky:SKSpriteNode?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -17,16 +18,25 @@ class View:NSWindow {
         skview.showsPhysics = true
         contentView!.addSubview(skview)
         
-        let scene = SKScene()
-        scene.backgroundColor = .clear
-        scene.scaleMode = .resizeFill
+        let scene = SceneView()
+        scene.left = {
+            print("left")
+            self.twinky?.run(SKAction.move(by:CGVector(dx:-15, dy:0), duration:0.1))
+        }
+        scene.right = {
+            self.twinky?.run(SKAction.move(by:CGVector(dx:15, dy:0), duration:0.1))
+        }
+        scene.up = {
+            self.twinky?.run(SKAction.applyImpulse(CGVector(dx:0, dy:40), duration:0.05))
+        }
         skview.presentScene(scene)
         
         let twinky = SKSpriteNode(imageNamed:"stand-right-0")
+        twinky.physicsBody = SKPhysicsBody(circleOfRadius:20)
+        twinky.physicsBody!.allowsRotation = false
         twinky.position = CGPoint(x:contentView!.bounds.midX, y:contentView!.bounds.midY)
         scene.addChild(twinky)
-        twinky.physicsBody = SKPhysicsBody(texture:twinky.texture!, size:twinky.texture!.size())
-        twinky.physicsBody?.isDynamic = false
+        self.twinky = twinky
         
         var grassTiles = [SKTileDefinition]()
         var groundTiles = [SKTileDefinition]()
@@ -41,12 +51,17 @@ class View:NSWindow {
         let groundGroup = SKTileGroup(rules:[SKTileGroupRule(adjacency:[], tileDefinitions:groundTiles)])
         let grass = SKTileMapNode(tileSet:SKTileSet(tileGroups:[grassGroup]), columns:50, rows:5, tileSize:
             CGSize(width:16, height:16), fillWith:grassGroup)
-        grass.position = CGPoint(x:grass.mapSize.width / 2, y:grass.mapSize.height / 2)
         let ground = SKTileMapNode(tileSet:SKTileSet(tileGroups:[groundGroup]), columns:50, rows:1, tileSize:
             CGSize(width:16, height:16), fillWith:groundGroup)
-        ground.position = CGPoint(x:ground.mapSize.width / 2, y:(ground.mapSize.height / 2) + grass.mapSize.height)
-        scene.addChild(grass)
-        scene.addChild(ground)
+        ground.position = CGPoint(x:0, y:grass.mapSize.height / 2)
+        
+        let node = SKNode()
+        node.addChild(grass)
+        node.addChild(ground)
+        node.physicsBody = SKPhysicsBody(edgeLoopFrom:node.calculateAccumulatedFrame())
+        node.position = CGPoint(x:node.calculateAccumulatedFrame().width / 2,
+                                y:node.calculateAccumulatedFrame().height / 2)
+        scene.addChild(node)
         
         skview.centerXAnchor.constraint(equalTo:contentView!.centerXAnchor).isActive = true
         skview.centerYAnchor.constraint(equalTo:contentView!.centerYAnchor).isActive = true
