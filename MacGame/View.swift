@@ -1,15 +1,21 @@
 import AppKit
 import SpriteKit
 
-class View:NSWindow {
+class View:NSWindow, SKPhysicsContactDelegate {
     private weak var skview:SKView!
     private weak var twinky:SKSpriteNode?
-    private var jumpable = true
+    private var jumpable = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = .black
         outlets()
+    }
+    
+    func didBegin(_ contact:SKPhysicsContact) {
+        if contact.bodyA.categoryBitMask + contact.bodyB.categoryBitMask == .twinky + .floor {
+            jumpable = true
+        }
     }
     
     private func outlets() {
@@ -20,18 +26,17 @@ class View:NSWindow {
         contentView!.addSubview(skview)
         
         let scene = SceneView()
+        scene.physicsWorld.contactDelegate = self
         scene.left = {
-            self.twinky?.physicsBody!.velocity = CGVector(dx:-120, dy:0)
-//            self.twinky?.run(SKAction.applyImpulse(CGVector(dx:-30, dy:0), duration:0.1)) {
-//                self.twinky?.run(SKAction.impus)
-//            }
+            self.twinky?.physicsBody!.velocity.dx = -160
+
         }
         scene.right = {
-            self.twinky?.physicsBody!.velocity = CGVector(dx:120, dy:0)
+            self.twinky?.physicsBody!.velocity.dx = 160
         }
         scene.up = {
             if self.jumpable {
-                self.twinky?.physicsBody!.applyImpulse(CGVector(dx:0, dy:30))
+                self.twinky?.physicsBody!.velocity.dy = 500
                 self.jumpable = false
             }
         }
@@ -40,6 +45,8 @@ class View:NSWindow {
         let twinky = SKSpriteNode(imageNamed:"stand-right-0")
         twinky.physicsBody = SKPhysicsBody(circleOfRadius:20)
         twinky.physicsBody!.allowsRotation = false
+        twinky.physicsBody!.categoryBitMask = .twinky
+        twinky.physicsBody!.contactTestBitMask = .floor
         scene.addChild(twinky)
         self.twinky = twinky
         
@@ -60,14 +67,15 @@ class View:NSWindow {
             CGSize(width:16, height:16), fillWith:groundGroup)
         ground.position = CGPoint(x:0, y:grass.mapSize.height / 2)
         
-        let node = SKNode()
-        node.addChild(grass)
-        node.addChild(ground)
-        node.physicsBody = SKPhysicsBody(edgeLoopFrom:node.calculateAccumulatedFrame())
-        node.position = CGPoint(x:node.calculateAccumulatedFrame().width / 2,
-                                y:node.calculateAccumulatedFrame().height / 2)
-        twinky.position = CGPoint(x:400, y:node.calculateAccumulatedFrame().height + 25)
-        scene.addChild(node)
+        let floor = SKNode()
+        floor.addChild(grass)
+        floor.addChild(ground)
+        let floorSize = floor.calculateAccumulatedFrame()
+        floor.physicsBody = SKPhysicsBody(edgeLoopFrom:floorSize)
+        floor.physicsBody!.categoryBitMask = .floor
+        floor.position = CGPoint(x:floorSize.width / 2, y:floorSize.height / 2)
+        twinky.position = CGPoint(x:400, y:floorSize.height + 25)
+        scene.addChild(floor)
         
         let camera = SKCameraNode()
         camera.position = CGPoint(x:400, y:300)

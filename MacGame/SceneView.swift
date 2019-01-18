@@ -6,6 +6,9 @@ class SceneView:SKScene {
     var up:(() -> Void)!
     private var time = TimeInterval()
     private var key = Int()
+    private var arrowLeft = false
+    private var arrowRight = false
+    private var arrowUp = false
     
     override func didMove(to view:SKView) {
         super.didMove(to:view)
@@ -15,19 +18,23 @@ class SceneView:SKScene {
     
     override func update(_ time:TimeInterval) {
         super.update(time)
-        if time - self.time > 0.1 {
-            switch key {
-            case 123: left()
-            case 124: right()
-            case 126: up()
-            default: break
-            }
-            key = 0
+        if time - self.time > 0.05 {
+            if arrowLeft { left() }
+            if arrowRight { right() }
+            if arrowUp { up() }
             self.time = time
         }
     }
     
-    override func keyDown(with event:NSEvent) {
-        key = Int(event.keyCode)
+    override func keyDown(with event:NSEvent) { key(event.keyCode, modifier:true) }
+    override func keyUp(with event:NSEvent) { key(event.keyCode, modifier:false) }
+    
+    private func key(_ code:uint16, modifier:Bool) {
+        switch code {
+        case 123: arrowLeft = modifier
+        case 124: arrowRight = modifier
+        case 126: arrowUp = modifier
+        default: break
+        }
     }
 }

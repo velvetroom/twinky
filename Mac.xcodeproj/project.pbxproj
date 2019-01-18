@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2008F7F421F21A55000599E9 /* UInt32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2008F7F321F21A55000599E9 /* UInt32.swift */; };
 		20165D3421EDCB61004B09D6 /* Mac.h in Headers */ = {isa = PBXBuildFile; fileRef = 20165D3321EDCB61004B09D6 /* Mac.h */; };
 		20165D3621EDCB61004B09D6 /* Mac.m in Sources */ = {isa = PBXBuildFile; fileRef = 20165D3521EDCB61004B09D6 /* Mac.m */; };
 		20165D4321EDCC73004B09D6 /* iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20165D4221EDCC73004B09D6 /* iOS.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2008F7F321F21A55000599E9 /* UInt32.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UInt32.swift; sourceTree = "<group>"; };
 		20165D3321EDCB61004B09D6 /* Mac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mac.h; sourceTree = "<group>"; };
 		20165D3521EDCB61004B09D6 /* Mac.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mac.m; sourceTree = "<group>"; };
 		20165D4221EDCC73004B09D6 /* iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				20898B2221EF19E5003E057C /* Application.swift */,
 				20F092EA21EF2A850081B22B /* View.swift */,
 				2030052121F1CA5F0039B242 /* SceneView.swift */,
+				2008F7F321F21A55000599E9 /* UInt32.swift */,
 				20165D5E21EDCD5F004B09D6 /* GameScene.sks */,
 				20165D6021EDCD5F004B09D6 /* Actions.sks */,
 				20165D6221EDCD5F004B09D6 /* GameScene.swift */,
@@ -351,6 +354,7 @@
 				20898B2321EF19E5003E057C /* Application.swift in Sources */,
 				20165D6521EDCD5F004B09D6 /* ViewController.swift in Sources */,
 				20165D6321EDCD5F004B09D6 /* GameScene.swift in Sources */,
+				2008F7F421F21A55000599E9 /* UInt32.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
