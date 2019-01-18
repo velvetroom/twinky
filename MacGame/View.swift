@@ -20,7 +20,6 @@ class View:NSWindow {
         
         let scene = SceneView()
         scene.left = {
-            print("left")
             self.twinky?.run(SKAction.move(by:CGVector(dx:-15, dy:0), duration:0.1))
         }
         scene.right = {
@@ -34,7 +33,6 @@ class View:NSWindow {
         let twinky = SKSpriteNode(imageNamed:"stand-right-0")
         twinky.physicsBody = SKPhysicsBody(circleOfRadius:20)
         twinky.physicsBody!.allowsRotation = false
-        twinky.position = CGPoint(x:contentView!.bounds.midX, y:contentView!.bounds.midY)
         scene.addChild(twinky)
         self.twinky = twinky
         
@@ -49,9 +47,9 @@ class View:NSWindow {
         
         let grassGroup = SKTileGroup(rules:[SKTileGroupRule(adjacency:[], tileDefinitions:grassTiles)])
         let groundGroup = SKTileGroup(rules:[SKTileGroupRule(adjacency:[], tileDefinitions:groundTiles)])
-        let grass = SKTileMapNode(tileSet:SKTileSet(tileGroups:[grassGroup]), columns:50, rows:5, tileSize:
+        let grass = SKTileMapNode(tileSet:SKTileSet(tileGroups:[grassGroup]), columns:100, rows:5, tileSize:
             CGSize(width:16, height:16), fillWith:grassGroup)
-        let ground = SKTileMapNode(tileSet:SKTileSet(tileGroups:[groundGroup]), columns:50, rows:1, tileSize:
+        let ground = SKTileMapNode(tileSet:SKTileSet(tileGroups:[groundGroup]), columns:100, rows:1, tileSize:
             CGSize(width:16, height:16), fillWith:groundGroup)
         ground.position = CGPoint(x:0, y:grass.mapSize.height / 2)
         
@@ -61,7 +59,16 @@ class View:NSWindow {
         node.physicsBody = SKPhysicsBody(edgeLoopFrom:node.calculateAccumulatedFrame())
         node.position = CGPoint(x:node.calculateAccumulatedFrame().width / 2,
                                 y:node.calculateAccumulatedFrame().height / 2)
+        twinky.position = CGPoint(x:400, y:node.calculateAccumulatedFrame().height + 25)
         scene.addChild(node)
+        
+        let camera = SKCameraNode()
+        camera.position = CGPoint(x:400, y:300)
+        scene.addChild(camera)
+        camera.constraints = [
+            SKConstraint.distance(SKRange(upperLimit:200), to:twinky),
+        SKConstraint.positionX(SKRange(lowerLimit:400, upperLimit:10000), y:SKRange(constantValue:300))]
+        scene.camera = camera
         
         skview.centerXAnchor.constraint(equalTo:contentView!.centerXAnchor).isActive = true
         skview.centerYAnchor.constraint(equalTo:contentView!.centerYAnchor).isActive = true

@@ -9,7 +9,7 @@ class SceneView:SKScene {
     
     override func didMove(to view:SKView) {
         super.didMove(to:view)
-        backgroundColor = .clear
+        backgroundColor = .blue
         scaleMode = .resizeFill
     }
     
@@ -25,6 +25,7 @@ class SceneView:SKScene {
             key = 0
             self.time = time
         }
+        print(camera?.position)
     }
     
     override func keyDown(with event:NSEvent) {
