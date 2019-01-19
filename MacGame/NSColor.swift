@@ -1,5 +1,5 @@
 import AppKit
 
 extension NSColor {
-    static let blue = #colorLiteral(red: 0.231372549, green: 0.7215686275, blue: 1, alpha: 1)
+    static let ground = #colorLiteral(red: 0.9921568627, green: 0.8823529412, blue: 0.5529411765, alpha: 1)
 }

@@ -78,7 +78,7 @@
 		20CAA7EA21F34D1B00605154 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20CAA7EC21F34D1B00605154 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		20CAA7EE21F34D1B00605154 /* MacGame.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = MacGame.entitlements; sourceTree = "<group>"; };
-		20CAA7EF21F34D1B00605154 /* MacOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MacOS.plist; sourceTree = "<group>"; };
+		20CAA7EF21F34D1B00605154 /* Mac.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Mac.plist; sourceTree = "<group>"; };
 		20CAA7F121F34D1B00605154 /* SceneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneView.swift; sourceTree = "<group>"; };
 		20CAA7FE21F34D5500605154 /* Tests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tests.plist; sourceTree = "<group>"; };
 		20CAA7FF21F34D5500605154 /* Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
@@ -181,7 +181,7 @@
 				20E6543021F3612800836F62 /* NSColor.swift */,
 				20CAA7E921F34D1B00605154 /* Mac.storyboard */,
 				20CAA7EE21F34D1B00605154 /* MacGame.entitlements */,
-				20CAA7EF21F34D1B00605154 /* MacOS.plist */,
+				20CAA7EF21F34D1B00605154 /* Mac.plist */,
 				20CAA7EA21F34D1B00605154 /* Assets.xcassets */,
 			);
 			path = MacGame;
@@ -677,7 +677,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
-				INFOPLIST_FILE = MacGame/MacOS.plist;
+				INFOPLIST_FILE = MacGame/Mac.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -697,7 +697,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
-				INFOPLIST_FILE = MacGame/MacOS.plist;
+				INFOPLIST_FILE = MacGame/Mac.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

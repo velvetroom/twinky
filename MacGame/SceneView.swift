@@ -19,6 +19,7 @@ class SceneView:SKScene, SKPhysicsContactDelegate {
         super.didMove(to:view)
         backgroundColor = .blue
         scaleMode = .resizeFill
+        physicsWorld.contactDelegate = self
         area()
         outlets()
     }
@@ -43,7 +44,24 @@ class SceneView:SKScene, SKPhysicsContactDelegate {
     override func keyUp(with event:NSEvent) { key(event.keyCode, modifier:false) }
     
     private func area() {
-        
+        let rows = Int.random(in:1 ... 150)
+        let block = SKSpriteNode(color:.ground, size:CGSize(width:rows * 32, height:96))
+        block.physicsBody = SKPhysicsBody(edgeLoopFrom:CGRect(origin:CGPoint(x:rows * -16, y:-48), size:block.size))
+        block.physicsBody!.categoryBitMask = .floor
+        block.position = CGPoint(x:rows * 16, y:48)
+        var origin = (rows - 1) * -16
+        for x in 0 ..< rows {
+            for y in -1 ... 1 {
+                let node = SKSpriteNode(imageNamed:"tile-\(Int.random(in:0 ... 9))")
+                node.position = CGPoint(x:origin, y:y * 32)
+                node.color = .brown
+                node.colorBlendFactor = 1
+                node.blendMode = .alpha
+                block.addChild(node)
+            }
+            origin += 32
+        }
+        addChild(block)
     }
     
     private func outlets() {
@@ -82,7 +100,7 @@ class SceneView:SKScene, SKPhysicsContactDelegate {
         floor.physicsBody = SKPhysicsBody(edgeLoopFrom:floorSize)
         floor.physicsBody!.categoryBitMask = .floor
         floor.position = CGPoint(x:floorSize.width / 2, y:floorSize.height / 2)
-        twinky.position = CGPoint(x:400, y:floorSize.height + 25)
+        twinky.position = CGPoint(x:400, y:121)
         addChild(floor)
         
         let camera = SKCameraNode()
