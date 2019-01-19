@@ -5,6 +5,7 @@ class View:NSWindow, SKPhysicsContactDelegate {
     private weak var skview:SKView!
     private weak var twinky:SKSpriteNode?
     private var jumpable = false
+    private let walking = SKAction.animate(with:[SKTexture(imageNamed:"twinky-walk-1"), SKTexture(imageNamed:"twinky-walk-0")], timePerFrame:0.2, resize:false, restore:true)
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,19 +28,9 @@ class View:NSWindow, SKPhysicsContactDelegate {
         
         let scene = SceneView()
         scene.physicsWorld.contactDelegate = self
-        scene.left = {
-            self.twinky?.physicsBody!.velocity.dx = -160
-
-        }
-        scene.right = {
-            self.twinky?.physicsBody!.velocity.dx = 160
-        }
-        scene.up = {
-            if self.jumpable {
-                self.twinky?.physicsBody!.velocity.dy = 500
-                self.jumpable = false
-            }
-        }
+        scene.left = { if let twinky = self.twinky { self.move(twinky, scale:-1) } }
+        scene.right = { if let twinky = self.twinky { self.move(twinky, scale:1) } }
+        scene.up = { if let twinky = self.twinky { self.up(twinky) } }
         skview.presentScene(scene)
         
         let twinky = SKSpriteNode(imageNamed:"twinky-stand")
@@ -89,5 +80,21 @@ class View:NSWindow, SKPhysicsContactDelegate {
         skview.centerYAnchor.constraint(equalTo:contentView!.centerYAnchor).isActive = true
         skview.widthAnchor.constraint(equalToConstant:800).isActive = true
         skview.heightAnchor.constraint(equalToConstant:600).isActive = true
+    }
+    
+    private func move(_ twinky:SKNode, scale:CGFloat) {
+        twinky.xScale = scale
+        twinky.physicsBody!.velocity.dx = 160 * scale
+        if jumpable && twinky.action(forKey:"walking") == nil {
+            twinky.run(walking, withKey:"walking")
+        }
+    }
+    
+    private func up(_ twinky:SKNode) {
+        if jumpable {
+            twinky.removeAllActions()
+            twinky.physicsBody!.velocity.dy = 500
+            jumpable = false
+        }
     }
 }
