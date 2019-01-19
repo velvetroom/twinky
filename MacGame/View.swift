@@ -5,10 +5,13 @@ class View:NSWindow, SKPhysicsContactDelegate {
     private weak var skview:SKView!
     private weak var twinky:SKSpriteNode?
     private var jumpable = false
-    private let walk = SKAction.animate(with:[SKTexture(imageNamed:"twinky-walk-1"),
-                                              SKTexture(imageNamed:"twinky-walk-0")], timePerFrame:0.2)
+    private let walk = SKAction.animate(with:[SKTexture(imageNamed:"twinky-walk-0"),
+                                              SKTexture(imageNamed:"twinky-walk-1")], timePerFrame:0.2)
     private let stand = SKAction.sequence([SKAction.wait(forDuration:0.6),
                                            SKAction.setTexture(SKTexture(imageNamed:"twinky-stand"))])
+    private let jump = SKAction.animate(with:[SKTexture(imageNamed:"twinky-jump-0"),
+                                              SKTexture(imageNamed:"twinky-jump-1"),
+                                              SKTexture(imageNamed:"twinky-stand")], timePerFrame:0.3)
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,14 +29,15 @@ class View:NSWindow, SKPhysicsContactDelegate {
         let skview = SKView()
         skview.translatesAutoresizingMaskIntoConstraints = false
         skview.ignoresSiblingOrder = true
-        skview.showsPhysics = true
         contentView!.addSubview(skview)
+        self.skview = skview
         
         let scene = SceneView()
         scene.physicsWorld.contactDelegate = self
         scene.left = { if let twinky = self.twinky { self.sides(twinky, scale:-1) } }
         scene.right = { if let twinky = self.twinky { self.sides(twinky, scale:1) } }
         scene.up = { if let twinky = self.twinky { self.up(twinky) } }
+        scene.space = { self.skview.isPaused.toggle() }
         skview.presentScene(scene)
         
         let twinky = SKSpriteNode(imageNamed:"twinky-stand")
@@ -88,18 +92,21 @@ class View:NSWindow, SKPhysicsContactDelegate {
     private func sides(_ twinky:SKNode, scale:CGFloat) {
         twinky.xScale = scale
         twinky.physicsBody!.velocity.dx = 160 * scale
-        if jumpable && twinky.action(forKey:"walking") == nil {
-            twinky.run(walk, withKey:"walking")
+        if jumpable {
+            if twinky.action(forKey:"walk") == nil {
+                twinky.run(walk, withKey:"walk")
+            }
+            twinky.removeAction(forKey:"stand")
+            twinky.run(stand, withKey:"stand")
         }
-        twinky.removeAction(forKey:"stand")
-        twinky.run(stand, withKey:"stand")
     }
     
     private func up(_ twinky:SKNode) {
         if jumpable {
-            twinky.removeAllActions()
-            twinky.physicsBody!.velocity.dy = 500
             jumpable = false
+            twinky.removeAllActions()
+            twinky.physicsBody!.velocity.dy = 600
+            twinky.run(jump, withKey:"jump")
         }
     }
 }

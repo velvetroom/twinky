@@ -4,6 +4,7 @@ class SceneView:SKScene {
     var left:(() -> Void)!
     var right:(() -> Void)!
     var up:(() -> Void)!
+    var space:(() -> Void)!
     private var time = TimeInterval()
     private var key = Int()
     private var arrowLeft = false
@@ -34,6 +35,7 @@ class SceneView:SKScene {
         case 123: arrowLeft = modifier
         case 124: arrowRight = modifier
         case 126: arrowUp = modifier
+        case 49: if modifier { space() }
         default: break
         }
     }
