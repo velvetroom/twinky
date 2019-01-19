@@ -42,7 +42,7 @@ class View:NSWindow, SKPhysicsContactDelegate {
         }
         skview.presentScene(scene)
         
-        let twinky = SKSpriteNode(imageNamed:"stand-right-0")
+        let twinky = SKSpriteNode(imageNamed:"twinky-stand")
         twinky.physicsBody = SKPhysicsBody(circleOfRadius:20)
         twinky.physicsBody!.allowsRotation = false
         twinky.physicsBody!.categoryBitMask = .twinky
