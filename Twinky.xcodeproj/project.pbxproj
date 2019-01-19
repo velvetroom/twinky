@@ -22,6 +22,8 @@
 		20CAA80421F34D6000605154 /* Twinky.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CAA80321F34D6000605154 /* Twinky.swift */; };
 		20CAA80621F34D6000605154 /* Twinky.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CAA80321F34D6000605154 /* Twinky.swift */; };
 		20CAA80921F34F4800605154 /* libiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20CAA80721F34F3100605154 /* libiOS.a */; };
+		20E6542F21F3595C00836F62 /* UInt32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CAA7E821F34D1B00605154 /* UInt32.swift */; };
+		20E6543121F3612800836F62 /* NSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E6543021F3612800836F62 /* NSColor.swift */; };
 		20E7F9E421F35038004765BD /* libMac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E7F9E321F35027004765BD /* libMac.a */; };
 		20E7F9E521F35046004765BD /* libMac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E7F9E321F35027004765BD /* libMac.a */; };
 /* End PBXBuildFile section */
@@ -85,6 +87,7 @@
 		20CAA80721F34F3100605154 /* libiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libiOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		20CAA80A21F34FB000605154 /* MacGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20CAA80B21F34FCE00605154 /* iOSGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		20E6543021F3612800836F62 /* NSColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColor.swift; sourceTree = "<group>"; };
 		20E7F9E321F35027004765BD /* libMac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMac.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -152,6 +155,7 @@
 		20CAA7D821F34D0700605154 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				20CAA7E821F34D1B00605154 /* UInt32.swift */,
 				20CAA7D921F34D0700605154 /* Sprites.xcassets */,
 			);
 			path = Shared;
@@ -171,10 +175,10 @@
 		20CAA7E521F34D1B00605154 /* MacGame */ = {
 			isa = PBXGroup;
 			children = (
-				20CAA7E721F34D1B00605154 /* View.swift */,
-				20CAA7E821F34D1B00605154 /* UInt32.swift */,
 				20CAA7EC21F34D1B00605154 /* Application.swift */,
+				20CAA7E721F34D1B00605154 /* View.swift */,
 				20CAA7F121F34D1B00605154 /* SceneView.swift */,
+				20E6543021F3612800836F62 /* NSColor.swift */,
 				20CAA7E921F34D1B00605154 /* Mac.storyboard */,
 				20CAA7EE21F34D1B00605154 /* MacGame.entitlements */,
 				20CAA7EF21F34D1B00605154 /* MacOS.plist */,
@@ -416,6 +420,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20CAA7F821F34D1B00605154 /* Application.swift in Sources */,
+				20E6543121F3612800836F62 /* NSColor.swift in Sources */,
 				20CAA7F421F34D1B00605154 /* UInt32.swift in Sources */,
 				20CAA7F321F34D1B00605154 /* View.swift in Sources */,
 				20CAA7FC21F34D1B00605154 /* SceneView.swift in Sources */,
@@ -426,6 +431,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20E6542F21F3595C00836F62 /* UInt32.swift in Sources */,
 				20CAA7E421F34D1300605154 /* Application.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,8 +508,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -558,8 +564,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -596,7 +602,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -613,7 +618,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
