@@ -13,7 +13,6 @@
 		20CAA7E221F34D1300605154 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20CAA7DE21F34D1300605154 /* Assets.xcassets */; };
 		20CAA7E421F34D1300605154 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CAA7E021F34D1300605154 /* Application.swift */; };
 		20CAA7F321F34D1B00605154 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CAA7E721F34D1B00605154 /* View.swift */; };
-		20CAA7F421F34D1B00605154 /* UInt32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CAA7E821F34D1B00605154 /* UInt32.swift */; };
 		20CAA7F521F34D1B00605154 /* Mac.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20CAA7E921F34D1B00605154 /* Mac.storyboard */; };
 		20CAA7F621F34D1B00605154 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20CAA7EA21F34D1B00605154 /* Assets.xcassets */; };
 		20CAA7F821F34D1B00605154 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CAA7EC21F34D1B00605154 /* Application.swift */; };
@@ -22,10 +21,11 @@
 		20CAA80421F34D6000605154 /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CAA80321F34D6000605154 /* Area.swift */; };
 		20CAA80621F34D6000605154 /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CAA80321F34D6000605154 /* Area.swift */; };
 		20CAA80921F34F4800605154 /* libGame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20CAA80721F34F3100605154 /* libGame.a */; };
-		20E6542F21F3595C00836F62 /* UInt32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CAA7E821F34D1B00605154 /* UInt32.swift */; };
 		20E6543121F3612800836F62 /* NSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E6543021F3612800836F62 /* NSColor.swift */; };
 		20E7F9E421F35038004765BD /* libGame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E7F9E321F35027004765BD /* libGame.a */; };
 		20E7F9E521F35046004765BD /* libGame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E7F9E321F35027004765BD /* libGame.a */; };
+		20E89BAE21F49C80003D71E1 /* UInt32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CAA7E821F34D1B00605154 /* UInt32.swift */; };
+		20E89BAF21F49C81003D71E1 /* UInt32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CAA7E821F34D1B00605154 /* UInt32.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,7 +155,6 @@
 		20CAA7D821F34D0700605154 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				20CAA7E821F34D1B00605154 /* UInt32.swift */,
 				20CAA7D921F34D0700605154 /* Sprites.xcassets */,
 			);
 			path = Shared;
@@ -200,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				20CAA80321F34D6000605154 /* Area.swift */,
+				20CAA7E821F34D1B00605154 /* UInt32.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -395,6 +395,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20E89BAE21F49C80003D71E1 /* UInt32.swift in Sources */,
 				20CAA80421F34D6000605154 /* Area.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,6 +404,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20E89BAF21F49C81003D71E1 /* UInt32.swift in Sources */,
 				20CAA80621F34D6000605154 /* Area.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -421,7 +423,6 @@
 			files = (
 				20CAA7F821F34D1B00605154 /* Application.swift in Sources */,
 				20E6543121F3612800836F62 /* NSColor.swift in Sources */,
-				20CAA7F421F34D1B00605154 /* UInt32.swift in Sources */,
 				20CAA7F321F34D1B00605154 /* View.swift in Sources */,
 				20CAA7FC21F34D1B00605154 /* SceneView.swift in Sources */,
 			);
@@ -431,7 +432,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20E6542F21F3595C00836F62 /* UInt32.swift in Sources */,
 				20CAA7E421F34D1300605154 /* Application.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

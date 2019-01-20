@@ -1,4 +1,5 @@
 import SpriteKit
+import Game
 
 class SceneView:SKScene, SKPhysicsContactDelegate {
     private weak var twinky:SKSpriteNode!
@@ -44,24 +45,28 @@ class SceneView:SKScene, SKPhysicsContactDelegate {
     override func keyUp(with event:NSEvent) { key(event.keyCode, modifier:false) }
     
     private func area() {
-        let rows = Int.random(in:1 ... 150)
-        let block = SKSpriteNode(color:.ground, size:CGSize(width:rows * 32, height:96))
-        block.physicsBody = SKPhysicsBody(edgeLoopFrom:CGRect(origin:CGPoint(x:rows * -16, y:-48), size:block.size))
-        block.physicsBody!.categoryBitMask = .floor
-        block.position = CGPoint(x:rows * 16, y:48)
-        var origin = (rows - 1) * -16
-        for x in 0 ..< rows {
-            for y in -1 ... 1 {
-                let node = SKSpriteNode(imageNamed:"tile-\(Int.random(in:0 ... 9))")
-                node.position = CGPoint(x:origin, y:y * 32)
-                node.color = .brown
-                node.colorBlendFactor = 1
-                node.blendMode = .alpha
-                block.addChild(node)
-            }
-            origin += 32
-        }
-        addChild(block)
+        let node = Area().make()
+        node.position = CGPoint(x:100, y:100)
+        addChild(node)
+        
+//        let rows = Int.random(in:1 ... 150)
+//        let block = SKSpriteNode(color:.ground, size:CGSize(width:rows * 32, height:96))
+//        block.physicsBody = SKPhysicsBody(edgeLoopFrom:CGRect(origin:CGPoint(x:rows * -16, y:-48), size:block.size))
+//        block.physicsBody!.categoryBitMask = .floor
+//        block.position = CGPoint(x:rows * 16, y:48)
+//        var origin = (rows - 1) * -16
+//        for x in 0 ..< rows {
+//            for y in -1 ... 1 {
+//                let node = SKSpriteNode(imageNamed:"tile-\(Int.random(in:0 ... 9))")
+//                node.position = CGPoint(x:origin, y:y * 32)
+//                node.color = .brown
+//                node.colorBlendFactor = 1
+//                node.blendMode = .alpha
+//                block.addChild(node)
+//            }
+//            origin += 32
+//        }
+//        addChild(block)
     }
     
     private func outlets() {
