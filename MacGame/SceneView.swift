@@ -45,9 +45,18 @@ class SceneView:SKScene, SKPhysicsContactDelegate {
     override func keyUp(with event:NSEvent) { key(event.keyCode, modifier:false) }
     
     private func area() {
-        let node = Area().make()
-        node.position = CGPoint(x:100, y:100)
-        addChild(node)
+        addChild(Area().make())
+    }
+    
+    private func outlets() {
+        let twinky = SKSpriteNode(imageNamed:"twinky-stand")
+        twinky.physicsBody = SKPhysicsBody(circleOfRadius:18)
+        twinky.physicsBody!.allowsRotation = false
+        twinky.physicsBody!.categoryBitMask = .twinky
+        twinky.physicsBody!.contactTestBitMask = .floor
+        addChild(twinky)
+        self.twinky = twinky
+        
         
 //        let rows = Int.random(in:1 ... 150)
 //        let block = SKSpriteNode(color:.ground, size:CGSize(width:rows * 32, height:96))
@@ -67,16 +76,9 @@ class SceneView:SKScene, SKPhysicsContactDelegate {
 //            origin += 32
 //        }
 //        addChild(block)
-    }
-    
-    private func outlets() {
-        let twinky = SKSpriteNode(imageNamed:"twinky-stand")
-        twinky.physicsBody = SKPhysicsBody(circleOfRadius:18)
-        twinky.physicsBody!.allowsRotation = false
-        twinky.physicsBody!.categoryBitMask = .twinky
-        twinky.physicsBody!.contactTestBitMask = .floor
-        addChild(twinky)
-        self.twinky = twinky
+        
+        
+        
         /*
          var grassTiles = [SKTileDefinition]()
          var groundTiles = [SKTileDefinition]()

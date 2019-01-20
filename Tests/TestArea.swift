@@ -8,48 +8,64 @@ class TestArea:XCTestCase {
     override func setUp() {
         area = Area()
         area.cols = 1
+        area.rows = 1
     }
     
     func testAreaCols() {
         area.cols = 3
-        XCTAssertEqual(area.tileSize.width * 3, area.make().calculateAccumulatedFrame().width)
+        XCTAssertEqual(area.size.width * 3, area.make().calculateAccumulatedFrame().width)
     }
     
     func testAreaRows() {
-        XCTAssertLessThanOrEqual(area.tileSize.height * 6, area.make().calculateAccumulatedFrame().height)
+        area.rows = 3
+        XCTAssertLessThanOrEqual(area.size.height * 3, area.make().calculateAccumulatedFrame().height)
     }
     
     func testHasTiles() {
-        XCTAssertNotNil((area.make().children.first?.children.first as? SKSpriteNode)?.texture)
-    }
-    
-    func testHasColor() {
-        area.tint = .red
-        guard let tile = (area.make().children.first?.children.first as? SKSpriteNode) else { return }
-        XCTAssertEqual(1, tile.color.redComponent)
-        XCTAssertEqual(0, tile.color.blueComponent)
-        XCTAssertEqual(0, tile.color.greenComponent)
-        XCTAssertEqual(1, tile.color.alphaComponent)
-        XCTAssertEqual(.alpha, tile.blendMode)
-        XCTAssertEqual(1, tile.colorBlendFactor)
+        XCTAssertNotNil((area.make().children.first as? SKSpriteNode)?.texture)
     }
     
     func testHasBody() {
-        XCTAssertNotNil(area.make().children.first?.physicsBody)
+        XCTAssertNotNil(area.make().physicsBody)
     }
     
-    func testBodyProperties() {
-        guard let body = area.make().children.first?.physicsBody else { return }
-        XCTAssertEqual(.floor, body.categoryBitMask)
+    func testBodyBitMask() {
+        XCTAssertEqual(.floor, area.make().physicsBody?.categoryBitMask)
     }
     
-    func testAtLeastOneBlankSpace() {
-        area.cols = 3
-        XCTAssertGreaterThan(0, area.make().children.reduce(into:(Int(), CGFloat())) {
-            if $1.frame.minX >= $0.1 + 32 {
-                $0.0 += 1
-            }
-            $0.1 = $1.frame.maxX
-        }.0)
+    func testZIndex() {
+        XCTAssertEqual(-1, area.make().zPosition)
+    }
+    
+    func testMakeMakesPlan() {
+        _ = area.make()
+        XCTAssertFalse(area.plan.isEmpty)
+    }
+    
+    func testPlanSize() {
+        area.cols = 10
+        area.makePlan()
+        XCTAssertEqual(10, area.plan.count)
+    }
+    
+    func testPlanMaxGap() {
+        area.cols = 1000
+        area.gap = 2
+        area.makePlan()
+        XCTAssertGreaterThan(3, area.plan.reduce((0, 0)) {
+            $1 == 0 ? ($0.0 + 1, max($0.1, $0.0 + 1)) : (0, $0.1)
+        }.1 )
+    }
+    
+    func testFirst20NoGap() {
+        area.cols = 1000
+        area.makePlan()
+        for i in 0 ..< 20 { XCTAssertEqual(1, area.plan[i]) }
+    }
+    
+    func testLast30NoGap() {
+        area.cols = 1000
+        area.makePlan()
+        for i in 970 ..< 1000 { XCTAssertEqual(1, area.plan[i]) }
     }
 }

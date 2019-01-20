@@ -15,7 +15,6 @@ class View:NSWindow {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.ignoresSiblingOrder = true
         view.presentScene(SceneView())
-        view.showsPhysics = true
         contentView!.addSubview(view)
         self.view = view
         
