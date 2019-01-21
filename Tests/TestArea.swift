@@ -25,14 +25,6 @@ class TestArea:XCTestCase {
         XCTAssertNotNil((area.make().children.first as? SKSpriteNode)?.texture)
     }
     
-    func testHasBody() {
-        XCTAssertNotNil(area.make().physicsBody)
-    }
-    
-    func testBodyBitMask() {
-        XCTAssertEqual(.floor, area.make().physicsBody?.categoryBitMask)
-    }
-    
     func testZIndex() {
         XCTAssertEqual(-1, area.make().zPosition)
     }

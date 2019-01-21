@@ -13,28 +13,29 @@ public class Area {
     public func make() -> SKNode {
         makePlan()
         let node = SKNode()
-        let path = CGMutablePath()
-        path.move(to:CGPoint(x:0, y:-100))
+        node.zPosition = -1
+        var origin:CGPoint? = CGPoint(x:0, y:size.height * CGFloat(rows) - 8)
         plan.enumerated().forEach {
-            path.addLine(to:CGPoint(x:size.width * CGFloat($0.offset), y:path.currentPoint.y))
             if $0.element == 1 {
                 for y in 0 ..< rows {
-                    let tile = SKSpriteNode(imageNamed:"ground-\(Int.random(in:0 ... 9))")
+                    let tile = SKSpriteNode(imageNamed:"\(y == rows - 1 ? "grass" : "ground" )-\(Int.random(in:0 ... 9))")
                     tile.size = size
                     tile.position = CGPoint(x:CGFloat($0.offset) * size.width + (size.width / 2),
                                             y:CGFloat(y) * size.height + (size.height / 2))
                     node.addChild(tile)
                 }
-                path.addLine(to:CGPoint(x:path.currentPoint.x, y:size.height * CGFloat(rows)))
-            } else {
-                path.addLine(to:CGPoint(x:path.currentPoint.x, y:-100))
+                if origin == nil {
+                    origin = CGPoint(x:size.width * CGFloat($0.offset), y:size.height * CGFloat(rows) - 8)
+                }
+            } else if origin != nil || $0.offset == cols - 1 {
+                let edge = SKNode()
+                edge.physicsBody = SKPhysicsBody(edgeFrom:origin!, to:
+                    CGPoint(x:size.width * CGFloat($0.offset), y:origin!.y))
+                edge.physicsBody!.categoryBitMask = .floor
+                node.addChild(edge)
+                origin = nil
             }
         }
-        path.addLine(to:CGPoint(x:size.width * CGFloat(cols), y:-100))
-        path.closeSubpath()
-        node.physicsBody = SKPhysicsBody(edgeLoopFrom:path)
-        node.physicsBody!.categoryBitMask = .floor
-        node.zPosition = -1
         return node
     }
     

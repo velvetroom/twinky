@@ -50,7 +50,7 @@ class SceneView:SKScene, SKPhysicsContactDelegate {
     
     private func outlets() {
         let twinky = SKSpriteNode(imageNamed:"twinky-stand")
-        twinky.physicsBody = SKPhysicsBody(circleOfRadius:18)
+        twinky.physicsBody = SKPhysicsBody(circleOfRadius:20)
         twinky.physicsBody!.allowsRotation = false
         twinky.physicsBody!.categoryBitMask = .twinky
         twinky.physicsBody!.contactTestBitMask = .floor
