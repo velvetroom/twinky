@@ -49,6 +49,27 @@ class TestArea:XCTestCase {
         }.1 )
     }
     
+    func testPlanMinGap() {
+        area.cols = 1000
+        area.gap = 4
+        area.makePlan()
+        var minimum = 4
+        var current:Int?
+        area.plan.forEach {
+            if $0 == 1 && current != nil {
+                minimum = min(minimum, current!)
+                current = nil
+            } else if $0 == 0 {
+                if current == nil {
+                    current = 1
+                } else {
+                    current = current! + 1
+                }
+            }
+        }
+        XCTAssertLessThan(1, minimum)
+    }
+    
     func testFirst20NoGap() {
         area.cols = 1000
         area.makePlan()
