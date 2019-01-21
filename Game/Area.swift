@@ -18,8 +18,17 @@ public class Area {
         plan.enumerated().forEach {
             if $0.element == 1 {
                 for y in 0 ..< rows {
-                    let tile = SKSpriteNode(imageNamed:"\(y == rows - 1 ? "grass" : "ground" )-\(Int.random(in:0 ... 9))")
+                    let name:String
+                    var scale = CGFloat(1)
+                    if $0.offset > 0 && plan[$0.offset - 1] == 0 || $0.offset < cols - 1 && plan[$0.offset + 1] == 0 {
+                        name = y == rows - 1 ? "grass-border" : "ground-border"
+                        scale = plan[$0.offset - 1] == 0 ? 1 : -1
+                    } else {
+                        name = "\(y == rows - 1 ? "grass" : "ground" )-\(Int.random(in:0 ... 9))"
+                    }
+                    let tile = SKSpriteNode(imageNamed:name)
                     tile.size = size
+                    tile.xScale = scale
                     tile.position = CGPoint(x:CGFloat($0.offset) * size.width + (size.width / 2),
                                             y:CGFloat(y) * size.height + (size.height / 2))
                     node.addChild(tile)
