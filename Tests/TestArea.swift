@@ -31,35 +31,35 @@ class TestArea:XCTestCase {
     
     func testMakeMakesPlan() {
         _ = area.make()
-        XCTAssertFalse(area.plan.isEmpty)
+        XCTAssertFalse(area.floor.isEmpty)
     }
     
     func testPlanSize() {
         area.cols = 10
-        area.makePlan()
-        XCTAssertEqual(10, area.plan.count)
+        area.build()
+        XCTAssertEqual(10, area.floor.count)
     }
     
     func testPlanMaxGap() {
         area.cols = 1000
         area.gap = 2
-        area.makePlan()
-        XCTAssertGreaterThan(3, area.plan.reduce((0, 0)) {
-            $1 == 0 ? ($0.0 + 1, max($0.1, $0.0 + 1)) : (0, $0.1)
+        area.build()
+        XCTAssertGreaterThan(3, area.floor.reduce((0, 0)) {
+            !$1 ? ($0.0 + 1, max($0.1, $0.0 + 1)) : (0, $0.1)
         }.1 )
     }
     
     func testPlanMinGap() {
         area.cols = 1000
         area.gap = 4
-        area.makePlan()
+        area.build()
         var minimum = 4
         var current:Int?
-        area.plan.forEach {
-            if $0 == 1 && current != nil {
+        area.floor.forEach {
+            if $0 && current != nil {
                 minimum = min(minimum, current!)
                 current = nil
-            } else if $0 == 0 {
+            } else if !$0 {
                 if current == nil {
                     current = 1
                 } else {
@@ -72,13 +72,19 @@ class TestArea:XCTestCase {
     
     func testFirst20NoGap() {
         area.cols = 1000
-        area.makePlan()
-        for i in 0 ..< 20 { XCTAssertEqual(1, area.plan[i]) }
+        area.build()
+        for i in 0 ..< 20 { XCTAssertTrue(area.floor[i]) }
     }
     
     func testLast30NoGap() {
         area.cols = 1000
-        area.makePlan()
-        for i in 970 ..< 1000 { XCTAssertEqual(1, area.plan[i]) }
+        area.build()
+        for i in 970 ..< 1000 { XCTAssertTrue(area.floor[i]) }
+    }
+    
+    func testNodesAreLessThanPlan() {
+        area.build()
+        area.cols = 10
+        XCTAssertGreaterThan(10, area.nodes.count)
     }
 }

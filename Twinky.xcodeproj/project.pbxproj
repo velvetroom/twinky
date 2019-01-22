@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2047CA1221F6FF3800FA98CC /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2047CA1121F6FF3800FA98CC /* Node.swift */; };
+		2047CA1321F6FF3800FA98CC /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2047CA1121F6FF3800FA98CC /* Node.swift */; };
 		20CAA7DA21F34D0700605154 /* Sprites.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20CAA7D921F34D0700605154 /* Sprites.xcassets */; };
 		20CAA7DB21F34D0700605154 /* Sprites.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20CAA7D921F34D0700605154 /* Sprites.xcassets */; };
 		20CAA7E121F34D1300605154 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20CAA7DD21F34D1300605154 /* LaunchScreen.storyboard */; };
@@ -65,6 +67,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2047CA1121F6FF3800FA98CC /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		20CAA7C021F34BDC00605154 /* Design */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Design; sourceTree = "<group>"; };
 		20CAA7C121F34BE500605154 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		20CAA7D921F34D0700605154 /* Sprites.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Sprites.xcassets; sourceTree = "<group>"; };
@@ -199,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				20CAA80321F34D6000605154 /* Area.swift */,
+				2047CA1121F6FF3800FA98CC /* Node.swift */,
 				20CAA7E821F34D1B00605154 /* UInt32.swift */,
 			);
 			path = Game;
@@ -395,6 +399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2047CA1221F6FF3800FA98CC /* Node.swift in Sources */,
 				20E89BAE21F49C80003D71E1 /* UInt32.swift in Sources */,
 				20CAA80421F34D6000605154 /* Area.swift in Sources */,
 			);
@@ -404,6 +409,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2047CA1321F6FF3800FA98CC /* Node.swift in Sources */,
 				20E89BAF21F49C81003D71E1 /* UInt32.swift in Sources */,
 				20CAA80621F34D6000605154 /* Area.swift in Sources */,
 			);

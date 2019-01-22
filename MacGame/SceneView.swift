@@ -57,7 +57,7 @@ class SceneView:SKScene, SKPhysicsContactDelegate {
         twinky.physicsBody!.allowsRotation = false
         twinky.physicsBody!.categoryBitMask = .twinky
         twinky.physicsBody!.contactTestBitMask = .floor
-        twinky.position = CGPoint(x:400, y:112)
+        twinky.position = CGPoint(x:400, y:120)
         addChild(twinky)
         self.twinky = twinky
         
