@@ -83,7 +83,7 @@ class SceneView:SKScene, SKPhysicsContactDelegate {
     
     private func sides(_ scale:CGFloat) {
         twinky.xScale = scale
-        twinky.physicsBody!.velocity.dx = 160 * scale
+        twinky.physicsBody!.velocity.dx = 170 * scale
         if jumpable {
             if twinky.action(forKey:"walk") == nil {
                 twinky.run(walk, withKey:"walk")
@@ -97,7 +97,7 @@ class SceneView:SKScene, SKPhysicsContactDelegate {
         if jumpable {
             jumpable = false
             twinky.removeAllActions()
-            twinky.physicsBody!.velocity.dy = 600
+            twinky.physicsBody!.velocity.dy = 650
             twinky.run(jump, withKey:"jump")
         }
     }

@@ -4,7 +4,7 @@ import SpriteKit
 public class Area {
     public var cols = 500
     public var rows = 3
-    public var gap = 4
+    public var gap = 5
     private(set) var floor = [Bool]()
     private(set) var nodes = [Node]()
     let size = CGSize(width:32, height:32)
@@ -22,17 +22,21 @@ public class Area {
     
     func build() {
         var gap = 0
+        var ground = 0
         for x in 0 ..< cols {
             var col = true
-            if gap < self.gap && x > 20 && x < cols - 30 {
-                if gap == 1 || .random(in:0 ..< 15) == 0 {
+            if ground != 1 && gap < self.gap && x > 20 && x < cols - 30 {
+                if gap == 1 || .random(in:0 ..< 10) == 0 {
                     col = false
                     gap += 1
+                    ground = 0
                 } else {
                     gap = 0
+                    ground += 1
                 }
             } else {
                 gap = 0
+                ground += 1
             }
             var node = Node.none
             switch Int.random(in:0 ..< 6) {
