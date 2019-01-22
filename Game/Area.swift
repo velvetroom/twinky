@@ -49,7 +49,7 @@ public class Area {
     }
     
     private func renderFloor(_ node:SKNode) {
-        var origin:CGPoint? = CGPoint(x:0, y:size.height * CGFloat(rows) - 5)
+        var origin:CGPoint? = CGPoint(x:0, y:size.height * CGFloat(rows) - 4)
         floor.enumerated().forEach {
             if $0.element {
                 for y in 0 ..< rows {
@@ -69,7 +69,7 @@ public class Area {
                     node.addChild(tile)
                 }
                 if origin == nil {
-                    origin = CGPoint(x:size.width * CGFloat($0.offset), y:size.height * CGFloat(rows) - 5)
+                    origin = CGPoint(x:size.width * CGFloat($0.offset), y:size.height * CGFloat(rows) - 4)
                 }
             } else if origin != nil || $0.offset == cols - 1 {
                 let edge = SKNode()
@@ -94,8 +94,10 @@ public class Area {
     private func renderBlock(_ index:Int) -> SKNode {
         let node = SKSpriteNode(imageNamed:"grass-block")
         node.size = size
-        node.position = CGPoint(x:CGFloat(index) * size.width + (size.width / 2),
-                                y:6 * size.height + (size.height / 2))
+        node.position = CGPoint(x:CGFloat(index) * size.width + (size.width / 2), y:6 * size.height + (size.height / 2))
+        node.physicsBody = SKPhysicsBody(edgeLoopFrom:CGRect(x:size.width / -2, y:(size.height / -2) + 4,
+                                                             width:size.width, height:size.height - 12))
+        node.physicsBody!.categoryBitMask = .floor
         return node
     }
 }
